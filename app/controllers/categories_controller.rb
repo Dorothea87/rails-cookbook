@@ -17,6 +17,7 @@ class CategoriesController < ApplicationController
       redirect_to category_path(@category)
     else
       render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
