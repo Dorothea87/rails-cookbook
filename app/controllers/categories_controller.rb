@@ -7,13 +7,27 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
   end
 
-  def create
-  end
-
-  def new
+   def new
     @category = Category.new
   end
 
+  def create
+    @category = Category.new(category_params)
+    if  @category.save
+      redirect_to category_path(@category)
+    else
+      render :new, status: :unprocessable_entity
+  end
+
   def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    redirect_to categories_path, status: :see_other
+  end
+
+  private
+
+  def category_params
+    params.require(:category).permit(:name)
   end
 end
