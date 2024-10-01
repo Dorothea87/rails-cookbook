@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
+  root "categories#index"
   # root "posts#index"
   resources :categories, only: [:index, :show, :create, :new, :destroy] do
     resources :bookmarks, only: [:create, :new]
