@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root "categories#index"
   # root "posts#index"
   resources :categories, only: [:index, :show, :create, :new, :destroy] do
-    resources :bookmarks, only: [:create, :new]
+    resources :bookmarks, only: [:new, :create]
   end
   resources :bookmarks, only: [:destroy]
 end

@@ -7,23 +7,23 @@
 <div class="container">
   <div class="d-flex justify-content-between align-items-center py-3">
     <h2>Recipes</h2>
-    <%= link_to "Add a recipe", "new_category_bookmark_path(@category)" %>
+    <%= link_to "Add a recipe", new_category_bookmark_path(@category) %>
   </div>
 </div>
 
 <div class="card-container">
-    <% @category.bookmarks.each do |bookmark| %>
-      <div class="card-recipe">
-        <%= image_tag bookmark.recipe.image_url %>
-        <div class="p-3">
-          <h3 class="card-title"><%= bookmark.recipe.name %></h3>
-          <p class="card-text"><%= bookmark.recipe.description %></p>
-        </div>
-        <div class="card-recipe-info">
-          <h3><%= bookmark.comment %></h3>
-          <h3><%= bookmark.recipe.rating %></h3>
-          <%= link_to "delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
-        </div>
+  <% @category.bookmarks.each do |bookmark| %>
+    <div class="card-recipe">
+      <%= image_tag bookmark.recipe.image_url %>
+      <div class="p-3">
+        <h3 class="card-title"><%= bookmark.recipe.name %></h3>
+        <p class="card-text"><%= bookmark.recipe.description %></p>
       </div>
-    <% end %>
+      <div class="card-recipe-infos">
+        <h5><%= bookmark.comment %></h5>
+        <h5><%= bookmark.recipe.rating %></h5>
+        <%= link_to "delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+      </div>
+    </div>
+  <% end %>
 </div>
