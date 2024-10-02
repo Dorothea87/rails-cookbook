@@ -28,7 +28,7 @@
       <div class="card-recipe-infos">
         <h6><%= bookmark.comment %></h6>
         <h6><%= bookmark.recipe.rating %></h6>
-        <%= link_to "delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        <%= link_to "delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %>
       </div>
     </div>
   <% end %>
