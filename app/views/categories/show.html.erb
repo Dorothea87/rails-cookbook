@@ -1,4 +1,10 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path "banner.jpg" %> );">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
+            <% if @category.photo.attached? %>
+              url( '<%= cl_image_path @category.photo.key, height: 300, width: 400, crop: :fill %>' )
+            <% else %>
+              url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)
+            <% end %>
+              ;">
   <div class="container">
     <h2 style="color: grey;"><%= @category.name %></h2>
   </div>
@@ -13,16 +19,16 @@
 
 <div class="card-container">
   <% @category.bookmarks.each do |bookmark| %>
-    <div class="card-recipe">
+    <div class="card-recipe m-3">
       <%= image_tag bookmark.recipe.image_url %>
       <div class="p-3">
         <h3 class="card-title"><%= bookmark.recipe.name %></h3>
         <p class="card-text"><%= bookmark.recipe.description %></p>
       </div>
       <div class="card-recipe-infos">
-        <h5><%= bookmark.comment %></h5>
-        <h5><%= bookmark.recipe.rating %></h5>
-        <%= link_to "delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+        <h6><%= bookmark.comment %></h6>
+        <h6><%= bookmark.recipe.rating %></h6>
+        <%= link_to "delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
       </div>
     </div>
   <% end %>

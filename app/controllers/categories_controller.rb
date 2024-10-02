@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
     if  @category.save
       redirect_to category_path(@category)
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entry
     end
   end
 
@@ -29,6 +29,6 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:name)
+    params.require(:category).permit(:name, :photo)
   end
 end
