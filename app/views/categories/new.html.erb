@@ -3,7 +3,7 @@
     <%= simple_form_for(@category) do |f| %>
       <%= f.input :name %>
       <%= f.input :photo, as: :file %>
-      <%= f.submit %>
+      <%= f.submit class: "btn btn-dark" %>
     <% end %>
-  <%= link_to 'back', categories_path, class: "btn btn-primary%>
+  <%= link_to 'back', categories_path, class: "btn btn-dark my-2" %>
 </div>
